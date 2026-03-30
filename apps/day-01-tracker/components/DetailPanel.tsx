@@ -5,7 +5,8 @@ type DetailPanelProps = {
 };
 
 const placeholder = "—";
-const GITHUB_BASE = "https://github.com/jonathanredford/30-apps-30-days/";
+const GITHUB_BASE =
+  "https://github.com/jonathanredford/30-apps-30-days/tree/main/";
 
 const displayValue = (value?: string) =>
   value && value.trim().length > 0 ? value : placeholder;

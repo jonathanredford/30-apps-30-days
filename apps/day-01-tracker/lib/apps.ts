@@ -9,7 +9,7 @@ export const apps: App[] = [
     description:
       "A dashboard to track and publicly showcase this 30-day challenge.",
     stack: "Next.js, Tailwind",
-    liveUrl: "",
+    liveUrl: "https://day01.slopp.co",
     githubPath: "apps/day-01-tracker",
     timeToShip: "",
     learned: "",
