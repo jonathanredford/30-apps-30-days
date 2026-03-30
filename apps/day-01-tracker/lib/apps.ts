@@ -12,7 +12,8 @@ export const apps: App[] = [
     liveUrl: "https://day01.slopp.co",
     githubPath: "apps/day-01-tracker",
     timeToShip: "",
-    learned: "",
+    learned:
+      "AI makes mistakes — you need experience to spot them. Easy to disengage from the process and miss flaws. Best used for getting an MVP out fast while you stay focused on the outcome, then iterate from there.",
     status: "shipped",
   },
   { day: 2, status: "upcoming" },
