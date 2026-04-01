@@ -16,8 +16,32 @@ export const apps: App[] = [
       "AI makes mistakes — you need experience to spot them. Easy to disengage from the process and miss flaws. Best used for getting an MVP out fast while you stay focused on the outcome, then iterate from there.",
     status: "shipped",
   },
-  { day: 2, status: "upcoming" },
-  { day: 3, status: "upcoming" },
+  {
+    day: 2,
+    name: "AI Code Reviewer",
+    description:
+      "Paste code and get an instant streaming review from Claude. Detects language, flags issues, and scores severity.",
+    stack: "Next.js 16, Tailwind, Anthropic SDK",
+    liveUrl: "https://day02.slopp.co",
+    githubPath: "apps/day-02-ai-code-reviewer",
+    timeToShip: "",
+    learned:
+      "Streaming UX changes the feel of an app entirely — users tolerate latency when they see progress. Structuring AI output (severity, headline, points) makes it far more scannable than a wall of text.",
+    status: "shipped",
+  },
+  {
+    day: 3,
+    name: "Voice Journal",
+    description:
+      "Record your voice, get a transcript via Whisper, and extract themes and action items with Claude.",
+    stack: "Next.js 16, Tailwind, OpenAI Whisper, Anthropic SDK",
+    liveUrl: "https://day03.slopp.co",
+    githubPath: "apps/day-03-voice-journal",
+    timeToShip: "",
+    learned:
+      "Browser MediaRecorder APIs are messier than expected — MIME type negotiation, permission UX, and blob assembly all need explicit handling. Demo mode is essential when API keys are personal and the app is public.",
+    status: "shipped",
+  },
   { day: 4, status: "upcoming" },
   { day: 5, status: "upcoming" },
   { day: 6, status: "upcoming" },
