@@ -27,17 +27,3 @@ Updated weekly in [docs/learnings.md](./docs/learnings.md)
 - Every app must be meaningfully different from the last
 - Reflect on what AI changed about how I worked
 
-```
-
-You'll just add a new row to that table each day — takes 30 seconds and keeps the repo looking alive and intentional.
-
-**Your starting file structure all up:**
-```
-
-30-apps-30-days/
-├── README.md
-├── docs/
-│ ├── app-readme-template.md
-│ └── learnings.md
-└── apps/
-└── day-01-tracker/
