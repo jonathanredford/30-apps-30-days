@@ -67,6 +67,8 @@ export function useDocGenerator(isDemo: boolean): DocGeneratorState & DocGenerat
     navigator.clipboard.writeText(markdown).then(() => {
       setHasCopied(true);
       setTimeout(() => setHasCopied(false), 2000);
+    }).catch((err) => {
+      setError(err instanceof Error ? err.message : 'Failed to copy to clipboard');
     });
   };
 
