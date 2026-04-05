@@ -71,7 +71,7 @@ export default function DocRenderer({ markdown }: DocRendererProps) {
         const path = spaceIdx === -1 ? '' : heading.slice(spaceIdx + 1);
 
         return (
-          <EndpointBlock key={i} method={method} path={path}>
+          <EndpointBlock key={`${method}-${path}-${i}`} method={method} path={path}>
             <ReactMarkdown remarkPlugins={[remarkGfm]} components={sharedComponents}>
               {body}
             </ReactMarkdown>
