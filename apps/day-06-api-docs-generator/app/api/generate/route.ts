@@ -69,24 +69,47 @@ export async function POST(request: Request) {
     });
   }
 
-  const { input, format } = (await request.json()) as { input: string; format: Format };
+  let input: string;
+  let format: Format;
+
+  try {
+    const body = (await request.json()) as { input: string; format: Format };
+    input = body.input;
+    format = body.format;
+  } catch {
+    return new Response('Invalid request body', { status: 400 });
+  }
+
+  if (!input || typeof input !== 'string') {
+    return new Response('input must be a non-empty string', { status: 400 });
+  }
+
+  if (!(format in FORMAT_PREFIXES)) {
+    return new Response(`format must be one of: ${Object.keys(FORMAT_PREFIXES).join(', ')}`, { status: 400 });
+  }
 
   const anthropic = new Anthropic();
 
-  const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 4096,
-    system: SYSTEM_PROMPT,
-    messages: [
-      {
-        role: 'user',
-        content: `${FORMAT_PREFIXES[format]}\n\n${input}`,
-      },
-    ],
-  });
+  let message: Awaited<ReturnType<typeof anthropic.messages.create>>;
+
+  try {
+    message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4096,
+      system: SYSTEM_PROMPT,
+      messages: [
+        {
+          role: 'user',
+          content: `${FORMAT_PREFIXES[format]}\n\n${input}`,
+        },
+      ],
+    });
+  } catch {
+    return new Response('Upstream API error', { status: 502 });
+  }
 
   const text =
-    message.content[0].type === 'text' ? message.content[0].text : '';
+    message.content[0]?.type === 'text' ? message.content[0].text : '';
 
   return new Response(text, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
